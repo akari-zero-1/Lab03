@@ -1,0 +1,11 @@
+Câu hỏi 1: Hãy thêm một phương thức addDigitalVideoDisc cho phép truyền một số lượng tham số không xác định cho DVD. So với tham số kiểu mảng, bạn thích cách nào hơn trong trường hợp này?
+
+Phương thức mới đã được tạo và comment lại vì nó trùng chữ ký với phương thức cũ. Phương thức này cho phép truyền một số lượng tham số không xác định thay vì sử dụng một mảng. Tôi thích cách này hơn vì nó giúp mã ngắn gọn và dễ đọc hơn, đặc biệt khi chỉ cần thêm một vài đối tượng mà không phải tạo ra một mảng riêng.
+
+Câu hỏi 2: Sau khi gọi swap(jungleDVD, cinderellaDVD), tại sao tiêu đề của hai đối tượng này vẫn không thay đổi?
+
+Trong Java, tham số được truyền theo giá trị, ngay cả với các đối tượng. Khi gọi swap(jungleDVD, cinderellaDVD), các tham số jungleDVD và cinderellaDVD được sao chép theo giá trị, tức là sao chép địa chỉ bộ nhớ của chúng. Trong phương thức swap, các tham số sao chép này sẽ được thay đổi, nhưng các đối tượng gốc (ở phương thức main) không bị ảnh hưởng. Điều này vì các tham số trong phương thức swap chỉ là bản sao của các tham chiếu gốc, nên bất kỳ thay đổi nào trong phương thức cũng không làm thay đổi đối tượng gốc. Do đó, sau khi phương thức swap kết thúc, tiêu đề của jungleDVD và cinderellaDVD vẫn giữ nguyên.
+
+Câu hỏi 3: Sau khi gọi changeTitle(jungleDVD, cinderellaDVD.getTitle()), tại sao tiêu đề của jungleDVD lại bị thay đổi?
+
+Trong trường hợp này, tham số jungleDVD được truyền vào phương thức changeTitle theo tham chiếu đến đối tượng jungleDVD. Mặc dù Java truyền tham số theo giá trị, nhưng đối với các đối tượng, giá trị mà Java sao chép là tham chiếu (địa chỉ bộ nhớ của đối tượng), chứ không phải bản sao của đối tượng. Khi gọi changeTitle(jungleDVD, cinderellaDVD.getTitle()), tham chiếu đến đối tượng jungleDVD được truyền vào, và phương thức có thể thay đổi thuộc tính của đối tượng này (ví dụ: tiêu đề của jungleDVD). Lệnh dvd.setTitle(title) trong phương thức thay đổi trực tiếp tiêu đề của đối tượng jungleDVD, vì tham chiếu đó trỏ đến đối tượng gốc, không phải bản sao.
